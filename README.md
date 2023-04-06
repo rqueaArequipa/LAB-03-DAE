@@ -30,9 +30,7 @@
             </div>
         </header>
     </div>
-
-    <!-- ------MAIN---------->
-    <section id="home" class="home">
+    <div id="home" class="home">
         <div class="content-banner">
             {% block main %}
             <div class="container-img">
@@ -45,7 +43,7 @@
             </div>
             {% endblock %}
         </div>
-    </section>
+    </div>
 
     <!-- footer -->
     <footer>

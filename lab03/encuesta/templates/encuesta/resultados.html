@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% load static %}
+{% block main %}
+<div class="container-img">
+    <img src="{% static 'img/voto.jpeg' %}" alt="">
+</div>
+<h1>VOTOS</h1>
+<hr style="margin-top: 10px;">
+<h2>PREGUNTA</h2>
+<h2>{{ pregunta.pregunta_text }}</h2>
+<div class="lab">
+    <ul>
+        {%for opcion in pregunta.opcion_set.all %}
+            <li class="list">{{opcion.opcion_texto }}  <i class="fa-solid fa-arrow-right">  </i>  {{opcion.votos }} voto{{ opcion.votos|pluralize }}</li>
+        {% endfor %}
+    </ul>
+
+    <button class="btnvotos"><a href="{% url 'encuesta:detalle' pregunta.id %}">Votar de nuevo</a></button><br>
+    <button class="btnvotos"><a href="{% url 'encuesta:index' %}">Ver Preguntas</a></button>
+    
+</div>
+
+{% endblock %}

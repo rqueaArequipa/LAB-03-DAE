@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+{% load static %}
+{% block main %}
+<div class="container-img">
+    <img src="{% static 'img/voto.jpeg' %}" alt="">
+</div>
+<h1>VOTOS</h1>
+<hr style="margin-top: 10px;">
+<h2>PREGUNTA 1</h2>
+<hr>
+<h2>{{ pregunta1.pregunta_text }}</h2>
+<div class="lab">
+    <ul>
+        {%for opcion1 in pregunta1.opcion_set.all %}
+            <li class="list">{{opcion1.opcion_texto }}  <i class="fa-solid fa-arrow-right">  </i>  {{opcion1.votos }} voto{{ opcion1.votos|pluralize }}</li>
+        {% endfor %}
+    </ul>
+    
+</div>
+<hr>
+<h2>PREGUNTA 2</h2>
+<hr>
+<h2>{{ pregunta2.pregunta_text }}</h2>
+<div class="lab">
+    <ul>
+        {%for opcion2 in pregunta2.opcion_set.all %}
+            <li class="list">{{opcion2.opcion_texto }}  <i class="fa-solid fa-arrow-right">  </i>  {{opcion2.votos }} voto{{ opcion1.votos|pluralize }}</li>
+        {% endfor %}
+    </ul>
+    
+</div>
+
+{% endblock %}

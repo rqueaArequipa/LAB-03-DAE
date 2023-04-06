@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+{% load static %}
+{% block main %}
+<div class="container-img">
+    <img src="{% static 'img/encuesta.jpeg' %}" alt="">
+</div>
+<h1>OPCIONES</h1>
+<hr style="margin-top: 10px;">
+<h2>PREGUNTA</h2>
+<h2>{{ pregunta.pregunta_text }}</h2>
+<div class="lab">
+    <form action="{% url 'encuesta:votar' pregunta.id %}" method="post">
+        {% csrf_token %}
+        {% for opcion in pregunta.opcion_set.all %}
+        <input type="radio" name="opcion" id="opcion{{ forloop.counter }}" value="{{ opcion.id}}" required>
+        <label for="opcion{{forloop.counter }}">{{ opcion.opcion_texto }}</label><br>
+        {% endfor %}
+        <input class="btn" type="submit" value="votar">
+    </form>
+    <button><a href="{% url 'encuesta:index' %}">Ver Preguntas</a></button>
+    
+</div>
+
+{% endblock %}

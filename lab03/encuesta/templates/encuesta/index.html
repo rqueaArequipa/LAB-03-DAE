@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+{% load static %}
+{% block main %}
+<div class="container-img">
+    <img src="{% static 'img/option.jpeg' %}" alt="">
+</div>
+<h1>ENCUESTA</h1>
+<hr style="margin-top: 10px;">
+<h2>PREGUNTAS</h2>
+<div class="lab">
+    <h2>{% if latest_question_list %}
+        <ul>
+            {% for pregunta in latest_question_list %}
+            <li>
+                <a href="/encuesta/{{pregunta.id}}">
+                    {{pregunta.pregunta_text}}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No hay registros</p>
+        {% endif %}
+    </h2>
+</div>
+
+{% endblock %}
